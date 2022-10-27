@@ -2,43 +2,41 @@ import { StyleSheet, View, Text } from 'react-native';
 import Square from './Square';
 
 //  this component generates a row of 10 squares
-const Row = () => {
+const Row = ({ collected, setCollected }) => {
     return(
         <View style={styles.rowContainer}>
-        <Square />
-        <Square />
-        <Square />
-        <Square />
-        <Square />
-        <Square />
-        <Square />
-        <Square />
-        <Square />
-        <Square />
+        <Square collected={collected} setCollected={setCollected}/>
+        <Square collected={collected} setCollected={setCollected}/>
+        <Square collected={collected} setCollected={setCollected}/>
+        <Square collected={collected} setCollected={setCollected}/>
+        <Square collected={collected} setCollected={setCollected}/>
+        <Square collected={collected} setCollected={setCollected}/>
+        <Square collected={collected} setCollected={setCollected}/>
+        <Square collected={collected} setCollected={setCollected}/>
+        <Square collected={collected} setCollected={setCollected}/>
+        <Square collected={collected} setCollected={setCollected}/>
     </View>
     )
 }
 
 // this component generates 10 rows of squares
-const Grid = () => {
+const Grid = ({collected, setCollected}) => {
     return(
 
     <View style={styles.gridContainer}>
-        <Row />
-        <Row />
-        <Row />
-        <Row />
-        <Row />
-        <Row />
-        <Row />
-        <Row />
-        <Row />
-        <Row />
-        <Row />
-        <Row />
-        <Row />
-        <Row />
-        <Row />
+        <Row collected={collected} setCollected={setCollected}/>
+        <Row collected={collected} setCollected={setCollected}/>
+        <Row collected={collected} setCollected={setCollected}/>
+        <Row collected={collected} setCollected={setCollected}/>
+        <Row collected={collected} setCollected={setCollected}/>
+        <Row collected={collected} setCollected={setCollected}/>
+        <Row collected={collected} setCollected={setCollected}/>
+        <Row collected={collected} setCollected={setCollected}/>
+        <Row collected={collected} setCollected={setCollected}/>
+        <Row collected={collected} setCollected={setCollected}/>
+        <Row collected={collected} setCollected={setCollected}/>
+        <Row collected={collected} setCollected={setCollected}/>
+        <Row collected={collected} setCollected={setCollected}/>
     </View>
     )
 }
@@ -49,7 +47,7 @@ const styles = StyleSheet.create({
 
     gridContainer: {
         width: '100%',
-        height: 675,
+        height: 585,
         backgroundColor: 'coral'
     },
     rowContainer: {

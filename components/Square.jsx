@@ -1,19 +1,22 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
-const Square = () => {
+const Square = ({ collected, setCollected }) => {
     const rand = Math.floor(Math.random() * 5);
     const [nuts, setNuts] = useState(rand);
     const [dug, setDug] = useState(false);
 
     const handlePress = () => {
-        const rand = Math.floor(Math.random() * 5);
+        const rand = Math.floor(Math.random() * 3);
         setNuts(rand);
         alert(`${nuts} nuts!`);
         setDug(true);
+        setCollected(collected + nuts);
     }
 
-    let dugSquare = 'brown';
+    
+
+    let dugSquare = '#332618';
 
     return (
         <View style={styles.rowContainer}>
@@ -36,7 +39,7 @@ const styles = StyleSheet.create({
     },
     rowSquare: {
         backgroundColor: 'green',
-        borderColor: 'yellow',
+        borderColor: '#5e4328',
         borderWidth: 1,
         width: 45,
         height: 45

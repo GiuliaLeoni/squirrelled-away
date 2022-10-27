@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 
-const Header = () => {
+const Header = ({ collected }) => {
 
     const [remainingTime, setRemainingTime] = useState("");
-    const [collected, setCollected] = useState('');
 
     const handlePress = () => {
         setRemainingTime('60')
@@ -24,22 +23,21 @@ const Header = () => {
         }
     }, [remainingTime]);
 
-    const updateRemainingTime = () => {
-        console.log("time")
-    }
-
     return (
         <View style={styles.headerContainer}>
             <View style={styles.info}>
-                <Text>Squirrell away!</Text>
-                <Text>Find as many seeds and nuts as you can in 60 seconds!</Text>
+                <Text style={{fontSize: 30, fontWeight: 'bold', color: 'white'}}>Squirrel Time ʕ •̀ o •́ ʔ</Text>
+                <Text style={{color: 'white', marginTop: 5, marginBottom: 20}}>It's squirrel time! Find as many nuts as you can in 60 seconds!</Text>
             </View>
             <View style={styles.stats}>
-                <Button title="Start" onPress={handlePress}></Button>
+                <View>
+                    <Button title="Start" onPress={handlePress}></Button>
+                </View>
+               
                 {/* seconds left */}
-                <Text>{remainingTime}</Text>
+                <Text style={{fontSize: 30, color: 'white'}}>{remainingTime}</Text>
                 {/* number of things found */}
-                <Text>{collected}/50</Text>
+                <Text style={{fontSize: 30, color: 'white'}}>{collected}/50</Text>
             </View>
 
         </View>
@@ -52,10 +50,12 @@ const styles = StyleSheet.create({
     headerContainer: {
         flex: 1,
         width: '100%',
-        backgroundColor: 'yellow'
+        backgroundColor: '#5e4328',
     },
     info: {
-        marginTop: 30
+        marginTop: 40,
+        alignItems: 'center',
+        marginHorizontal: 10
     },
     stats: {
         flexDirection:'row',
