@@ -3,15 +3,26 @@ import { StyleSheet, View, Text, Button } from 'react-native';
 
 const Header = () => {
 
-    const [remainingTime, setRemainingTime] = useState("60");
+    const [remainingTime, setRemainingTime] = useState("");
     const [collected, setCollected] = useState('');
+
+    const handlePress = () => {
+        setRemainingTime('60')
+    }
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            updateRemainingTime();
+            setRemainingTime(remainingTime - 1)
         }, 1000);
-        return() => clearInterval(intervalId);
-    }, [])
+
+        if(remainingTime == 0) {
+            clearInterval(intervalId);
+        }
+
+        return() => {
+            clearInterval(intervalId);
+        }
+    }, [remainingTime]);
 
     const updateRemainingTime = () => {
         console.log("time")
@@ -24,7 +35,7 @@ const Header = () => {
                 <Text>Find as many seeds and nuts as you can in 60 seconds!</Text>
             </View>
             <View style={styles.stats}>
-                <Button title="Start"></Button>
+                <Button title="Start" onPress={handlePress}></Button>
                 {/* seconds left */}
                 <Text>{remainingTime}</Text>
                 {/* number of things found */}

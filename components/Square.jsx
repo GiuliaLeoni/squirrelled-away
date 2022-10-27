@@ -1,15 +1,24 @@
+import { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 const Square = () => {
+    const rand = Math.floor(Math.random() * 5);
+    const [nuts, setNuts] = useState(rand);
+    const [dug, setDug] = useState(false);
 
     const handlePress = () => {
-        alert("pressed");
+        const rand = Math.floor(Math.random() * 5);
+        setNuts(rand);
+        alert(`${nuts} nuts!`);
+        setDug(true);
     }
+
+    let dugSquare = 'brown';
 
     return (
         <View style={styles.rowContainer}>
             <TouchableOpacity onPress={handlePress}>
-            <View style={styles.rowSquare}></View> 
+            <View style={[styles.rowSquare, dug && {backgroundColor: dugSquare}]}></View> 
             </TouchableOpacity>
         </View>
     )
